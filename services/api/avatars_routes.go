@@ -215,7 +215,7 @@ func postAvatars(c *fiber.Ctx) error {
 	}
 
 	if err = c.BodyParser(&r); err != nil {
-		return c.Status(400).JSON(models.MakeErrorResponse("bad request", 400))
+		return c.Status(400).JSON(models.MakeErrorResponse("bad request 4", 400))
 	}
 
 	if a, err = models.GetAvatarById(r.ID); a != nil || err == nil {
@@ -223,15 +223,15 @@ func postAvatars(c *fiber.Ctx) error {
 	}
 
 	if !r.HasValidUrls() {
-		return c.Status(400).JSON(models.MakeErrorResponse("bad request", 400))
+		return c.Status(400).JSON(models.MakeErrorResponse("bad request 3", 400))
 	}
 
 	if fileId, err = r.GetFileID(); err != nil {
-		return c.Status(400).JSON(models.MakeErrorResponse("bad request", 400))
+		return c.Status(400).JSON(models.MakeErrorResponse("bad request 2", 400))
 	}
 
 	if imageId, err = r.GetImageID(); err != nil {
-		return c.Status(400).JSON(models.MakeErrorResponse("bad request", 400))
+		return c.Status(400).JSON(models.MakeErrorResponse("bad request 1", 400))
 	}
 
 	a = &models.Avatar{
